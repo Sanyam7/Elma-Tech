@@ -16,11 +16,13 @@ function Navbar({ onToggleMenu }) {
             <span className="brand-tagline">Emotional Life Management Assistant</span>
           </div>
           <div className="nav-links">
-            <Link to="/" className="nav-link">Home</Link>
+            <a href="/#app-showcase" className="nav-link">App Preview</a>
             <a href="/#features" className="nav-link">Features</a>
             <a href="/#for-psychologists" className="nav-link">For Psychologists</a>
             <Link to="/contact" className="nav-link">Contact</Link>
           </div>
+          {/* Header CTA */}
+          <Link to="/?waitlist=1" className="nav-cta" aria-label="Get Started">Get Started</Link>
           <button className="mobile-menu-toggle" onClick={onToggleMenu} aria-label="Open Menu">
             <i className="fas fa-bars"></i>
           </button>

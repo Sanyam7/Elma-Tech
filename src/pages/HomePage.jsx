@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import './Home.css'
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
@@ -176,6 +177,9 @@ function HomePage() {
   const [waitlistOpen, setWaitlistOpen] = useState(false)
   const [psychOpen, setPsychOpen] = useState(false)
 
+  const location = useLocation()
+  const navigate = useNavigate()
+
   // Mobile carousel state for App Showcase
   const [showcaseIndex, setShowcaseIndex] = useState(0)
   const touchStartXRef = useRef(null)
@@ -190,6 +194,23 @@ function HomePage() {
     }
     return () => { if (typeof document !== 'undefined') document.body.style.overflow = '' }
   }, [waitlistOpen, psychOpen])
+
+  // Open waitlist modal when URL contains ?waitlist=1 or true
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const trigger = params.get('waitlist')
+    if (trigger === '1' || trigger === 'true') {
+      setWaitlistOpen(true)
+    }
+  }, [location.search])
+
+  const closeWaitlist = () => {
+    setWaitlistOpen(false)
+    const params = new URLSearchParams(location.search)
+    if (params.has('waitlist')) {
+      navigate('/', { replace: true })
+    }
+  }
 
   const goToSlide = (idx) => {
     const normalized = ((idx % totalShowcaseSlides) + totalShowcaseSlides) % totalShowcaseSlides
@@ -314,7 +335,7 @@ function HomePage() {
                   <div className="elma-phone-glow" aria-hidden="true"></div>
                 </div>
                 <div className="elma-screen-caption">
-                  <h3>Your Emotional Dashboard</h3>
+                  <h3>Emotional Dashboard</h3>
                   <p>Track moods, streaks & growth</p>
                 </div>
               </div>
@@ -564,9 +585,9 @@ function HomePage() {
             </div>
             <p className="research-caption" data-aos="fade-up" data-aos-delay="300">Research-inspired frameworks from global leaders</p>
             <div className="trust-stats" data-aos="fade-up" data-aos-delay="400">
-              <div className="trust-stat"><span className="trust-number">500</span>+<span className="trust-label">Research Papers Analyzed</span></div>
-              <div className="trust-stat"><span className="trust-number">15</span>+<span className="trust-label">Years of Combined Research</span></div>
-              <div className="trust-stat"><span className="trust-number">98</span>%<span className="trust-label">Evidence-Based Methods</span></div>
+              <div className="trust-stat"><span className="trust-number">500+</span><span className="trust-label">Research Papers Analyzed</span></div>
+              <div className="trust-stat"><span className="trust-number">15+</span><span className="trust-label">Years of Combined Research</span></div>
+              <div className="trust-stat"><span className="trust-number">98%</span><span className="trust-label">Evidence-Based Methods</span></div>
             </div>
           </div>
 
@@ -621,6 +642,33 @@ function HomePage() {
                 <div className="benefit-item"><i className="fas fa-check-circle"></i><span>Your privacy, always in your control</span></div>
                 <div className="benefit-item"><i className="fas fa-check-circle"></i><span>Mood Flower, Ribbon, Avatar</span></div>
               </div>
+            </div>
+          </div>
+          {/* Mobile paired comparison for horizontal alignment */}
+          <div className="comparison-mobile-header" aria-hidden="true">
+            <div className="header-title traditional">Traditional Apps</div>
+            <div className="header-title elma">ELMA</div>
+          </div>
+          <div className="comparison-pairs" aria-label="Traditional vs ELMA comparison (mobile)">
+            <div className="comparison-pair">
+              <div className="benefit-item"><i className="fas fa-times-circle"></i><span>Just mood logs</span></div>
+              <div className="benefit-item"><i className="fas fa-check-circle"></i><span>Stress trigger Detection</span></div>
+            </div>
+            <div className="comparison-pair">
+              <div className="benefit-item"><i className="fas fa-times-circle"></i><span>Generic tips</span></div>
+              <div className="benefit-item"><i className="fas fa-check-circle"></i><span>Interactive, science-backed games</span></div>
+            </div>
+            <div className="comparison-pair">
+              <div className="benefit-item"><i className="fas fa-times-circle"></i><span>Faceless interface</span></div>
+              <div className="benefit-item"><i className="fas fa-check-circle"></i><span>ELMA herself, your companion & mascot</span></div>
+            </div>
+            <div className="comparison-pair">
+              <div className="benefit-item"><i className="fas fa-times-circle"></i><span>Intrusive notifications</span></div>
+              <div className="benefit-item"><i className="fas fa-check-circle"></i><span>Your privacy, always in your control</span></div>
+            </div>
+            <div className="comparison-pair">
+              <div className="benefit-item"><i className="fas fa-times-circle"></i><span>Clinical and boring UI</span></div>
+              <div className="benefit-item"><i className="fas fa-check-circle"></i><span>Mood Flower, Ribbon, Avatar</span></div>
             </div>
           </div>
           <div className="brand-statement" data-aos="zoom-in" data-aos-delay="300">

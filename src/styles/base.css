@@ -10,7 +10,7 @@
   --elma-soft-green: #B8E6B8;
 
   /* Background Gradients */
-  --bg-primary: linear-gradient(135deg, #0A0A0A 0%, #1A0F2E 100%);
+  --bg-primary: linear-gradient(135deg, #0A0A0A 0%, #1A0A0A 100%);
   --bg-secondary: linear-gradient(135deg, #12081F 0%, #0F1823 100%);
   --bg-card: rgba(255, 255, 255, 0.03);
   --bg-glass: rgba(255, 255, 255, 0.05);
@@ -87,3 +87,16 @@ p { color: rgba(255, 255, 255, 0.8); line-height: 1.7; font-size: 1.1rem; }
 
 a { color: var(--elma-purple); text-decoration: none; transition: var(--transition-smooth); }
 a:hover { color: var(--elma-pink); transform: translateY(-1px); }
+
+/* Ensure emojis render in native colors (no gradient effects) */
+.emoji {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  color: inherit !important;
+}
+/* Extra safety for emojis inside gradient headings */
+h1 .emoji, h2 .emoji, h3 .emoji, h4 .emoji, h5 .emoji, h6 .emoji {
+  -webkit-text-fill-color: initial !important;
+}
