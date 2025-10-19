@@ -69,10 +69,10 @@
 /* Why ELMA */
 .why-elma-section { position: relative; }
 .section-header { text-align: center; }
-.section-header h2 { margin-bottom: 0.5rem; }
-.section-header p { color: #cbd1da; text-align: center; max-width: 850px; margin: 0.25rem auto 0.75rem; }
+.section-header h2 { margin-bottom: 1rem; }
+.section-header p { color: #cbd1da; text-align: center; max-width: 850px; margin: 0.25rem auto 0.9rem; }
 .floating-words {
-  display: flex; gap: 1rem; justify-content: center; margin-top: 0.5rem;
+  display: flex; gap: 1rem; justify-content: center; margin-top: 0.9rem;
 }
 .floating-word {
   background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 0.4rem 0.8rem; font-size: 0.9rem; color: #e9ecf4;
@@ -82,7 +82,7 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
-.why-text { text-align: center; max-width: 850px; margin: 0.5rem auto 2rem; color: #cfd3db; }
+.why-text { text-align: center; max-width: 850px; margin: 1rem auto 2.2rem; color: #cfd3db; }
 .highlights-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;
 }
@@ -148,7 +148,42 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
 }
+/* Gradient border on hover */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, #FFBBD8, #BA92FF, #90E0EF);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 160ms ease;
+  z-index: 0;
+}
+.feature-card:hover::before { opacity: 1; }
+
+/* Top gradient bar, shown only on the hovered card */
+.feature-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FFBBD8, #BA92FF, #90E0EF);
+  opacity: 0;
+  transition: opacity 160ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.feature-card:hover::after { opacity: 1; }
+.feature-card:hover { transform: translateY(-1px); border-color: rgba(186,146,255,0.35); box-shadow: 0 12px 36px rgba(186,146,255,0.18); }
 .feature-card h3 { background: linear-gradient(90deg, #FFBBD8, #BA92FF, #90E0EF); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .feature-icon { font-size: 1.25rem; margin-bottom: 0.5rem; }
 
@@ -174,7 +209,7 @@
 }
 .benefit-icon { font-size: 1.5rem; }
 .benefit-highlight { color: #e9edf4; font-weight: 700; margin-top: 0.4rem; }
-.benefit-animation { position: absolute; right: 0.6rem; bottom: 0.6rem; display: flex; gap: 0.25rem; }
+.benefit-animation { position: absolute; left: 50%; bottom: 0.6rem; transform: translateX(-50%); display: flex; gap: 0.25rem; justify-content: center; }
 .pulse-dot {
   width: 8px; height: 8px; background: #BA92FF; border-radius: 50%; animation: pulse 2s ease-in-out infinite;
 }
@@ -231,10 +266,8 @@
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 6px 16px rgba(0,0,0,0.25);
 }
 .trust-number { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; margin: 0; line-height: 1.05; color: #f1c6e6; display: inline-flex; align-items: baseline; }
-.trust-number::after { content: ''; margin-left: 0.08em; font-size: 0.75em; font-weight: 800; color: #f1c6e6; }
-.trust-stats .trust-stat:nth-child(1) .trust-number::after { content: '+'; }
-.trust-stats .trust-stat:nth-child(2) .trust-number::after { content: '+'; }
-.trust-stats .trust-stat:nth-child(3) .trust-number::after { content: '%'; }
+/* Removed auto-appended symbols to prevent duplicate '+' and '%' */
+/* Include '+' or '%' directly in the text where needed. */
 .trust-label { margin: 0; color: #cbd1da; font-weight: 600; letter-spacing: 0.01em; grid-column: 1 / -1; font-size: 1rem; }
 
 .partner-cta-section {
@@ -334,6 +367,11 @@
   .benefit-cards-grid { grid-template-columns: 1fr; }
   .compliance-badges { grid-template-columns: repeat(2, 1fr); }
   .security-features { grid-template-columns: 1fr; }
+  /* Center the last compliance badge (User-First Privacy) on mobile */
+  .compliance-badges .badge-item:last-child { grid-column: 1 / -1; justify-self: center; max-width: 320px; width: 100%; }
+  /* Stack trust stats vertically and center them on mobile */
+  .trust-stats { grid-template-columns: 1fr; justify-items: center; }
+  .trust-stat { max-width: 280px; width: 100%; }
   /* Show mobile paired comparison and hide two-column grid */
   .comparison-grid { display: none; }
   .comparison-pairs { display: grid; gap: 0.8rem; }
