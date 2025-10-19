@@ -137,6 +137,7 @@ function Contact() {
               <div className="error-message" style={{ marginTop: '0.75rem' }} aria-live="polite">{submitError}</div>
             )}
             <div id="successMessage" className={`success-message ${successVisible ? 'show' : ''}`}>
+              <span className="heart-confirmation" aria-hidden="true">♥</span>
               ✨ Thank you for contacting us! We'll get back to you within 24 hours.
             </div>
           </div>

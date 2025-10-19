@@ -100,3 +100,23 @@ a:hover { color: var(--elma-pink); transform: translateY(-1px); }
 h1 .emoji, h2 .emoji, h3 .emoji, h4 .emoji, h5 .emoji, h6 .emoji {
   -webkit-text-fill-color: initial !important;
 }
+
+/* Heart confirmation (global) */
+.heart-confirmation {
+  display: inline-block;
+  font-size: clamp(2.6rem, 6vw, 3.4rem);
+  line-height: 1;
+  background: var(--elma-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 10px 24px rgba(186,146,255,0.35));
+  animation: heartPop 600ms ease both;
+  margin: 0.5rem auto 0.75rem;
+}
+@keyframes heartPop {
+  0% { transform: scale(0.86); opacity: 0; }
+  60% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); }
+}

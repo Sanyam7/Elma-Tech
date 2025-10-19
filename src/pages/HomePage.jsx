@@ -76,6 +76,7 @@ function WaitlistModal({ isOpen, onClose }) {
             </>
           ) : (
             <div className="success-state">
+              <span className="heart-confirmation" aria-hidden="true">♥</span>
               <h3>You're in! ELMA is excited to grow with you.</h3>
             </div>
           )}
@@ -164,6 +165,7 @@ function PsychologistModal({ isOpen, onClose }) {
             </>
           ) : (
             <div className="success-state">
+              <span className="heart-confirmation" aria-hidden="true">♥</span>
               <h3>Application submitted! ELMA is excited to grow with you.</h3>
             </div>
           )}
@@ -254,7 +256,11 @@ function HomePage() {
             <div className="hero-elma-wide" data-aos="zoom-in">
               <img src="/images/elma-avatar.png" alt="ELMA - Your AI Powered Emotional Companion" loading="eager" onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/800x450/BA92FF/FFFFFF?text=ELMA+Avatar' }} />
             </div>
-            <h1 className="hero-headline" data-aos="fade-up" data-aos-delay="200">Your AI powered emotional companion.</h1>
+            <h1 className="hero-headline" data-aos="fade-up" data-aos-delay="200">
+               <span className="line">Your AI powered</span>{" "}
+               <span className="line">emotional</span>{" "}
+               <span className="line">companion.</span>
+             </h1>
             <p className="hero-subheadline" data-aos="fade-up" data-aos-delay="300">ELMA helps you understand your moods, reframe your thoughts, and grow stronger every day. Stigma-free, science-backed, and always by your side.</p>
             <div className="hero-cta-buttons" data-aos="fade-up" data-aos-delay="400">
               <button className="cta-button primary large" id="heroUserCTA" onClick={() => setWaitlistOpen(true)}><span>✨</span> Start your journey with ELMA</button>

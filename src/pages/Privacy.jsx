@@ -137,7 +137,7 @@ function Privacy() {
               <ul style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.8 }}>
                 <li>General Privacy: <a href="mailto:privacy@elma.ltd">privacy@elma.ltd</a></li>
                 <li>Data Protection Officer: <a href="mailto:dpo@elma.ltd">dpo@elma.ltd</a></li>
-                <li>Address: ELMA Ltd., Bangalore, India</li>
+                <li>Address: ELMA Wellness LLP, Jaipur, Rajasthan, India</li>
               </ul>
             </section>
 

@@ -138,7 +138,7 @@ function Terms() {
               <h3>Contact Information <span className="emoji">📞</span></h3>
               <ul style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.8 }}>
                 <li>Email: <a href="mailto:support@elma.ltd">support@elma.ltd</a></li>
-                <li>Address: ELMA Ltd., Bangalore, India</li>
+                <li>Address: ELMA Wellness LLP, Jaipur, Rajasthan, India</li>
               </ul>
             </section>
 

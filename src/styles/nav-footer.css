@@ -14,7 +14,7 @@
 .nav-content { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
 .logo { display: flex; align-items: center; gap: 0.75rem; flex-wrap: nowrap; }
 .logo-img { height: 40px; width: auto; border-radius: 8px; }
-.brand-tagline { font-size: 0.9rem; font-weight: 600; background: linear-gradient(90deg, #7F00FF, #E100FF); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.brand-tagline { font-size: 0.9rem; font-weight: 600; background: var(--elma-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
 
 .nav-links { display: flex; align-items: center; gap: 2rem; }
 .nav-link { color: rgba(255, 255, 255, 0.8); font-weight: 500; padding: 0.5rem 0; position: relative; transition: var(--transition-smooth); }
