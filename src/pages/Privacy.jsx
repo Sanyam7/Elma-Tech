@@ -1,6 +1,15 @@
 import React from 'react'
+import { setPageSEO } from '../utils/seo'
 
 function Privacy() {
+  React.useEffect(() => {
+    setPageSEO({
+      title: 'Privacy Policy — ELMA',
+      description: 'Learn how ELMA protects, uses, and gives you control over your data.',
+      path: '/privacy'
+    })
+  }, [])
+
   return (
     <main>
       <section className="subpage">

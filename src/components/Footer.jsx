@@ -10,7 +10,7 @@ function Footer() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-logo">
-            <img src="/images/elma-logo.png" alt="ELMA Logo" className="footer-logo-img" onError={handleLogoError} />
+            <img src="/images/elma-logo.png" alt="ELMA Logo" className="footer-logo-img" onError={handleLogoError} loading="lazy" decoding="async" fetchPriority="low" />
           </div>
           <div className="footer-links">
             <Link to="/privacy">Privacy Policy</Link>

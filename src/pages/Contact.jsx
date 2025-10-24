@@ -1,11 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 
 import './Contact.css'
+import { setPageSEO } from '../utils/seo'
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '81727855-9c6b-4474-abd0-9fb03150fe7f'
 
 function Contact() {
+  // SEO: centralized
+  useEffect(() => {
+    setPageSEO({
+      title: 'Contact — ELMA',
+      description: 'Contact ELMA for support, partnerships, and general inquiries.',
+      path: '/contact'
+    })
+  }, [])
+
   const nameRef = useRef(null)
   const emailRef = useRef(null)
   const subjectRef = useRef(null)

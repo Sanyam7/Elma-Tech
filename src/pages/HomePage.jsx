@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import './Home.css'
+import { setPageSEO } from '../utils/seo'
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '81727855-9c6b-4474-abd0-9fb03150fe7f'
@@ -182,6 +183,15 @@ function HomePage() {
   const location = useLocation()
   const navigate = useNavigate()
 
+  // SEO: centralized
+  useEffect(() => {
+    setPageSEO({
+      title: 'ELMA — AI Emotional Companion',
+      description: 'ELMA helps you understand your moods, reframe thoughts, and grow every day.',
+      path: '/'
+    })
+  }, [])
+
   // Mobile carousel state for App Showcase
   const [showcaseIndex, setShowcaseIndex] = useState(0)
   const touchStartXRef = useRef(null)
@@ -254,7 +264,7 @@ function HomePage() {
         <div className="container">
           <div className="hero-content">
             <div className="hero-elma-wide" data-aos="zoom-in">
-              <img src="/images/elma-avatar.png" alt="ELMA - Your AI Powered Emotional Companion" loading="eager" onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/800x450/BA92FF/FFFFFF?text=ELMA+Avatar' }} />
+              <img src="/images/elma-avatar.png" alt="ELMA - Your AI Powered Emotional Companion" loading="eager" fetchPriority="high" decoding="async" onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/800x450/BA92FF/FFFFFF?text=ELMA+Avatar' }} />
             </div>
             <h1 className="hero-headline" data-aos="fade-up" data-aos-delay="200">
                <span className="line">Your AI powered</span>{" "}
@@ -327,7 +337,7 @@ function HomePage() {
             >
               <div className="elma-showcase-device is-hero" data-device="1">
                 <div className="elma-showcase-phone">
-                  <img src="/images/elma-splash.png" alt="ELMA welcome screen with logo and tagline" className="elma-screen" loading="lazy" />
+                  <img src="/images/elma-splash.png" alt="ELMA welcome screen with logo and tagline" className="elma-screen" loading="lazy" decoding="async" />
                   <div className="elma-phone-glow" aria-hidden="true"></div>
                 </div>
                 <div className="elma-screen-caption">
@@ -337,7 +347,7 @@ function HomePage() {
               </div>
               <div className="elma-showcase-device is-left" data-device="2">
                 <div className="elma-showcase-phone">
-                  <img src="/images/elma-dashboard.png" alt="ELMA dashboard showing mood tracking and streaks" className="elma-screen" loading="lazy" onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/390x844/90E0EF/FFFFFF?text=Dashboard' }} />
+                  <img src="/images/elma-dashboard.png" alt="ELMA dashboard showing mood tracking and streaks" className="elma-screen" loading="lazy" decoding="async" onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/390x844/90E0EF/FFFFFF?text=Dashboard' }} />
                   <div className="elma-phone-glow" aria-hidden="true"></div>
                 </div>
                 <div className="elma-screen-caption">
@@ -350,7 +360,7 @@ function HomePage() {
                   <div className="elma-phone-frame">
                     <div className="elma-phone-notch" aria-hidden="true"></div>
                     <div className="elma-phone-screen">
-                      <img src="/images/elma-journal.png" alt="ELMA private journal with lock icon" className="elma-screen" loading="lazy" onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/390x844/FFBBD8/FFFFFF?text=Journal' }} />
+                      <img src="/images/elma-journal.png" alt="ELMA private journal with lock icon" className="elma-screen" loading="lazy" decoding="async" onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/390x844/FFBBD8/FFFFFF?text=Journal' }} />
                     </div>
                     <div className="elma-phone-homebar" aria-hidden="true"></div>
                   </div>
@@ -366,7 +376,7 @@ function HomePage() {
                   <div className="elma-phone-frame">
                     <div className="elma-phone-notch" aria-hidden="true"></div>
                     <div className="elma-phone-screen">
-                      <img src="/images/elma-moodflower.png" alt="ELMA mood flower selection wheel" className="elma-screen" loading="lazy" onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/390x844/90E0EF/FFFFFF?text=Mood+Flower' }} />
+                      <img src="/images/elma-moodflower.png" alt="ELMA mood flower selection wheel" className="elma-screen" loading="lazy" decoding="async" onError={(e) => { e.currentTarget.src = 'https://via.placeholder.com/390x844/90E0EF/FFFFFF?text=Mood+Flower' }} />
                     </div>
                     <div className="elma-phone-homebar" aria-hidden="true"></div>
                   </div>

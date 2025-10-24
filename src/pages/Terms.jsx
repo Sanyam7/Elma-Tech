@@ -1,6 +1,15 @@
 import React from 'react'
+import { setPageSEO } from '../utils/seo'
 
 function Terms() {
+  React.useEffect(() => {
+    setPageSEO({
+      title: 'Terms of Service — ELMA',
+      description: 'Read ELMA\'s Terms of Service outlining usage, disclaimers, and policies.',
+      path: '/terms'
+    })
+  }, [])
+
   return (
     <main>
       <section className="subpage">

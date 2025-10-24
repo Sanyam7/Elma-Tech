@@ -1,0 +1,7 @@
+# robots.txt for ELMA
+User-agent: *
+Allow: /
+# Disallow common noise directories (none for this static site)
+# Disallow: /api/
+
+Sitemap: https://www.elma.ltd/sitemap.xml
